@@ -1,0 +1,20 @@
+{
+    "GL-4492-99X": {
+        "status": "In Transit",
+        "location": "London Heathrow Hub, UK",
+        "estimated_delivery": "June 02, 2026",
+        "description": "Premium electronics parcel processed through customs sorting facility."
+    },
+    "GL-1022-77M": {
+        "status": "Delivered",
+        "location": "New York, USA",
+        "estimated_delivery": "Completed",
+        "description": "Signed and left at front desk reception."
+    },
+    "GL-8831-00A": {
+        "status": "Delayed",
+        "location": "Paris CDG Airport, France",
+        "estimated_delivery": "Pending - June 05, 2026",
+        "description": "Held due to severe cross-atlantic weather delays."
+    }
+}

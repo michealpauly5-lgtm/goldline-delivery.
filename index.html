@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldline Delivery | Premium Courier Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">GOLDLINE <span class="gold">DELIVERY</span></div>
+        <a href="mailto:support@yourdomain.com?subject=Goldline%20Support%20Request" class="support-btn">Support</a>
+    </header>
+
+    <main class="hero">
+        <div class="hero-container">
+            <h1>Track Your Global Shipment</h1>
+            <p>Enter your premium tracking number below for real-time updates.</p>
+            
+            <div class="search-box">
+                <input type="text" id="tracking-input" placeholder="e.g., GL-8839-92X" autocomplete="off">
+                <button onclick="trackPackage()">Track Order</button>
+            </div>
+
+            <div id="result-container" class="result-card hidden">
+                <div class="result-header">
+                    <h3>Shipment Status</h3>
+                    <span id="status-badge" class="badge">In Transit</span>
+                </div>
+                <div class="result-body">
+                    <p><strong>Tracking ID:</strong> <span id="res-id"></span></p>
+                    <p><strong>Current Location:</strong> <span id="res-location"></span></p>
+                    <p><strong>Estimated Delivery:</strong> <span id="res-delivery"></span></p>
+                    <p><strong>Description:</strong> <span id="res-desc"></span></p>
+                </div>
+            </div>
+            
+            <div id="error-message" class="error-card hidden">
+                Tracking number not found. Please verify your code and try again.
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Goldline Delivery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function trackPackage() {
+            const input = document.getElementById('tracking-input').value.trim().toUpperCase();
+            const resultContainer = document.getElementById('result-container');
+            const errorMessage = document.getElementById('error-message');
+
+            // Hide previous results
+            resultContainer.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            if (!input) {
+                alert("Please enter a tracking number.");
+                return;
+            }
+
+            try {
+                // Fetch our "back-end" JSON database file
+                const response = await fetch('tracking-data.json');
+                const data = await response.json();
+
+                // Check if the input code exists in our file
+                if (data[input]) {
+                    const info = data[input];
+                    
+                    // Populate data into the HTML elements
+                    document.getElementById('res-id').innerText = input;
+                    document.getElementById('res-location').innerText = info.location;
+                    document.getElementById('res-delivery').innerText = info.estimated_delivery;
+                    document.getElementById('res-desc').innerText = info.description;
+                    
+                    const badge = document.getElementById('status-badge');
+                    badge.innerText = info.status;
+                    
+                    // Color code the status badge dynamically
+                    if(info.status.toLowerCase() === 'delivered') {
+                        badge.style.background = '#2ecc71';
+                    } else if(info.status.toLowerCase() === 'delayed') {
+                        badge.style.background = '#e74c3c';
+                    } else {
+                        badge.style.background = '#f39c12'; // In Transit
+                    }
+
+                    // Reveal the result card
+                    resultContainer.classList.remove('hidden');
+                } else {
+                    // Show error if tracking ID isn't in JSON
+                    errorMessage.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error("Error fetching tracking data:", error);
+                alert("An error occurred while tracking. Please contact support.");
+            }
+        }
+    </script>
+</body>
+</html>
