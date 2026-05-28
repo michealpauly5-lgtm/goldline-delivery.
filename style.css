@@ -175,3 +175,83 @@ footer {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* MODAL (POPUP) STYLES */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85); /* Dim background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #1a1a1e;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    border: 1px solid #d4af37; /* Gold border */
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    color: #a0a0ab;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-content input, .modal-content textarea {
+    background: #121214;
+    border: 1px solid #2a2a30;
+    padding: 12px;
+    color: white;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.submit-btn {
+    background-color: #d4af37;
+    color: #121214;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #2a2a30;
+    padding-top: 15px;
+}
+
+.direct-email {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-top: 5px;
+}
