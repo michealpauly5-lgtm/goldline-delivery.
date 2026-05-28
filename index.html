@@ -45,10 +45,10 @@
         
         <div class="support-options">
             <!-- Option 1: Direct Email -->
-            <a href="mailto:your-email@gmail.com" class="support-box">
-                <span class="gold">Email Us</span>
-                <p>Direct priority inbox</p>
-            </a>
+            <a href="mailto:goldlinedeliverymain@gmail.com" class="support-box" style="text-decoration: none;">
+    <span style="color: #d4af37; font-weight: bold;">Email Us</span>
+    <p style="color: #d4af37;">Direct priority inbox</p>
+</a>
 
           
                <!-- Live Contact Form for Vercel -->
@@ -67,8 +67,48 @@
     <footer>
         <p>&copy; 2026 Goldline Delivery</p>
     </footer>
+        <script>
+    // --- THIS IS THE NEW PART THAT CLEARS THE FORM ---
+    window.onpageshow = function(event) {
+        // If the user hits the "Back" button, this forces a fresh page load
+        if (event.persisted) {
+            window.location.reload();
+        }
+        // This specifically targets the form and wipes all text boxes clean
+        const form = document.querySelector('form');
+        if (form) {
+            form.reset();
+        }
+    };
 
-    <script>
+    // --- THIS IS YOUR EXISTING TRACKING CODE ---
+    async function trackPackage() {
+        const input = document.getElementById('tracking-input').value.trim().toUpperCase();
+        const res = document.getElementById('result-container');
+        const err = document.getElementById('error-message');
+        res.classList.add('hidden');
+        err.classList.add('hidden');
+
+        try {
+            const response = await fetch('tracking-data.json');
+            const data = await response.json();
+            if (data[input]) {
+                const info = data[input];
+                document.getElementById('res-id').innerText = input;
+                document.getElementById('res-location').innerText = info.location;
+                document.getElementById('res-delivery').innerText = info.estimated_delivery;
+                document.getElementById('res-desc').innerText = info.description;
+                document.getElementById('status-badge').innerText = info.status;
+                res.classList.remove('hidden');
+            } else {
+                err.classList.remove('hidden');
+            }
+        } catch (e) { 
+            console.log("System offline."); 
+        }
+    }
+</script>
+
         async function trackPackage() {
             const input = document.getElementById('tracking-input').value.trim().toUpperCase();
             const res = document.getElementById('result-container');
