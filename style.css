@@ -1,177 +1,80 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #121214;
-    color: #f5f5f7;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Header Styles */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #1a1a1e;
-    border-bottom: 1px solid #2a2a30;
-}
-
-.logo {
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-}
-
-.gold {
-    color: #d4af37; /* Premium Gold Accent */
-}
-
-.support-btn {
-    text-decoration: none;
-    color: #121214;
-    background-color: #d4af37;
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: background 0.3s ease;
-}
-
-.support-btn:hover {
-    background-color: #f3ce56;
-}
-
-/* Hero Section */
-.hero {
-    flex: 1;
+/* MODAL (POPUP) STYLES */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85); /* Dim background */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
-.hero-container {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-p {
-    color: #a0a0ab;
-    margin-bottom: 30px;
-}
-
-/* Search Box Container */
-.search-box {
-    display: flex;
+.modal-content {
     background-color: #1a1a1e;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    border: 1px solid #d4af37; /* Gold border */
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    color: #a0a0ab;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-content input, .modal-content textarea {
+    background: #121214;
     border: 1px solid #2a2a30;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 12px;
+    color: white;
+    border-radius: 4px;
+    font-family: inherit;
 }
 
-.search-box input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 18px;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-}
-
-.search-box button {
+.submit-btn {
     background-color: #d4af37;
-    border: none;
-    padding: 0 25px;
     color: #121214;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease;
 }
 
-.search-box button:hover {
-    background-color: #f3ce56;
-}
-
-/* Result Cards */
-.result-card, .error-card {
-    background-color: #1a1a1e;
-    border: 1px solid #2a2a30;
-    border-radius: 8px;
-    padding: 25px;
-    text-align: left;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    animation: fadeIn 0.4s ease;
-}
-
-.error-card {
-    border-color: #e74c3c;
-    color: #e74c3c;
+.modal-footer {
+    margin-top: 20px;
     text-align: center;
-}
-
-.result-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #2a2a30;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-.badge {
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #fff;
-}
-
-.result-body p {
-    margin-bottom: 12px;
-    color: #f5f5f7;
-    font-size: 0.95rem;
-}
-
-.result-body p strong {
-    color: #a0a0ab;
-    display: inline-block;
-    width: 160px;
-}
-
-/* Utilities */
-.hidden {
-    display: none !important;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #1a1a1e;
-    font-size: 0.8rem;
-    color: #63636e;
+    font-size: 0.9rem;
     border-top: 1px solid #2a2a30;
+    padding-top: 15px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.direct-email {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-top: 5px;
 }
