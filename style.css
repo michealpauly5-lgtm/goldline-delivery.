@@ -1,3 +1,67 @@
+/* 1. THE MAIN BODY (The top half fix) */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121214;
+    color: #f5f5f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+    background-color: #1a1a1e;
+    text-align: center;
+    border-bottom: 1px solid #2a2a30;
+}
+
+.gold { color: #d4af37; }
+
+/* 2. THE HERO/TRACKING AREA */
+.hero {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1 { font-size: 2rem; font-weight: 300; }
+
+.search-box {
+    display: flex;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #2a2a30;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px;
+    background: #1a1a1e;
+    border: none;
+    color: white;
+}
+
+.search-box button {
+    background: #d4af37;
+    border: none;
+    padding: 0 20px;
+    font-weight: bold;
+}
+
+/* 3. THE RESULTS (The "Hidden" Fix) */
+.result-card, .error-card {
+    background: #1a1a1e;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: left;
+    border: 1px solid #2a2a30;
+}
+
+.hidden { display: none !important; }
+
+/* 4. THE SUPPORT SECTION (The bottom half) */
 .support-section {
     padding: 60px 20px;
     background-color: #1a1a1e;
@@ -5,50 +69,33 @@
     border-top: 1px solid #d4af37;
 }
 
-.support-section h2 {
-    color: #d4af37;
-    margin-bottom: 10px;
-}
-
-.support-options {
-    max-width: 500px;
-    margin: 30px auto;
-}
-
 .support-box {
     display: block;
     text-decoration: none;
     border: 1px solid #2a2a30;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    max-width: 400px;
     border-radius: 8px;
-    transition: 0.3s;
-}
-
-.support-box:hover {
-    border-color: #d4af37;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .form-container input, .form-container textarea {
+    width: 100%;
+    max-width: 400px;
     background: #121214;
     border: 1px solid #2a2a30;
     padding: 15px;
     color: white;
+    margin-bottom: 10px;
     border-radius: 4px;
 }
 
 .form-container button {
+    width: 100%;
+    max-width: 400px;
     background: #d4af37;
-    color: #121214;
     padding: 15px;
     border: none;
     font-weight: bold;
     border-radius: 4px;
-    cursor: pointer;
 }
